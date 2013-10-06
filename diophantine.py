@@ -2,6 +2,10 @@
 
 import numpy as np
 
+# TODO: pretty-print of the general form solution
+# TODO: check whether the equation has any solutions at all
+# TODO: account for the right-hand side of the equation
+
 
 def params(M):
     return np.vstack([row[1] for row in M])
@@ -40,6 +44,11 @@ def solve_dioph_eqn(C):
     return (coeffs(M), params(M))
 
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
-    # print solve_dioph_eqn([84, 96, 72])
+    # import doctest
+    # doctest.testmod()
+    import sys
+    if len(sys.argv) == 1:
+        C = [int(n) for n in raw_input('Space-separated list of coefficients: ').split()]
+    else:
+        C = [int(n) for n in sys.argv[1:]]
+    print solve_dioph_eqn(C)
